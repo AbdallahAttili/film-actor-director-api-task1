@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository // Indicates that this interface is a repository component in Spring Boot
 public interface ActorRepository extends MongoRepository<Actor, String> {
     // This interface provides CRUD operations for the Actor entity
-
 }

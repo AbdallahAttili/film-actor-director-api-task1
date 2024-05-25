@@ -40,5 +40,4 @@ public class ActorController {
     public void deleteActorById(@PathVariable String actorId) {
         actorService.deleteActorById(actorId); // Deletes an actor by their ID
     }
-
 }
