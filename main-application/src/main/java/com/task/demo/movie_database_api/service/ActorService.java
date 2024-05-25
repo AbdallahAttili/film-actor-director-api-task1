@@ -1,8 +1,7 @@
 package com.task.demo.movie_database_api.service;
 
-import com.forbes.task.the.first.task.entity.Actor;
-import com.forbes.task.the.first.task.entity.Film;
-import com.forbes.task.the.first.task.repository.ActorRepository;
+import com.task.demo.movie_database_api.entity.Actor;
+import com.task.demo.movie_database_api.repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,8 +47,4 @@ public class ActorService {
         actorRepository.deleteById(actorId); // Deletes an actor by their ID
     }
 
-    public Set<Film> getFilmsByActorName(String actorName) {
-        Actor actor = actorRepository.findByName(actorName);
-        return actor != null ? actor.getFilms() : null;
-    }
 }

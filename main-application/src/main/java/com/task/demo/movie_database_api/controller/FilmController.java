@@ -1,7 +1,7 @@
 package com.task.demo.movie_database_api.controller;
 
-import com.forbes.task.the.first.task.entity.Film;
-import com.forbes.task.the.first.task.service.FilmService;
+import com.task.demo.movie_database_api.entity.Film;
+import com.task.demo.movie_database_api.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,14 +40,4 @@ public class FilmController {
     public void deleteFilmById(@PathVariable String filmId) {
         filmService.deleteFilmById(filmId); // Deletes a film by its ID
     }
-
-    /*
-    @GetMapping
-    public getAllFilmsForCertainDirector(@RequestBody Director director) {
-    }
-
-    @GetMapping
-    public getAllFilmsForCertainActor(@RequestBody Actor actor) {
-    }
-    */
 }

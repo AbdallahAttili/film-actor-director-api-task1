@@ -1,7 +1,7 @@
 package com.task.demo.movie_database_api.service;
 
-import com.forbes.task.the.first.task.entity.Director;
-import com.forbes.task.the.first.task.repository.DirectorRepository;
+import com.task.demo.movie_database_api.entity.Director;
+import com.task.demo.movie_database_api.repository.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
