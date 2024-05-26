@@ -4,7 +4,7 @@ import com.task.demo.movie_database_api.entity.Director;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository // Indicates that this interface is a repository component in Spring
+@Repository
 public interface DirectorRepository extends MongoRepository<Director, String> {
-    // This interface provides CRUD operations for the Director entity
+
 }
