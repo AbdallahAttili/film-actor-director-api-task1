@@ -1,4 +1,4 @@
-package com.task.demo.movie_database_api.entity;
+package com.task.demo.movie_database_api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,16 +11,15 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "directors")
-public class Director {
+@Document(collection = "actors")
+public class Actor {
 
     @Id
-    private String directorId;
+    private String actorId;
     private String name;
     private int age;
     private String nickName;
-    private LocalDateTime birthDate;
     private String nationality;
+    private LocalDateTime birthDate;
     private String photoUrl;
-
 }

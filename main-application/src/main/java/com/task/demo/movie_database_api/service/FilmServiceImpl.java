@@ -1,7 +1,7 @@
 package com.task.demo.movie_database_api.service;
 
-import com.task.demo.movie_database_api.entity.Film;
-import com.task.demo.movie_database_api.repository.FilmRepository;
+import com.task.demo.movie_database_api.model.Film;
+import com.task.demo.movie_database_api.dao.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

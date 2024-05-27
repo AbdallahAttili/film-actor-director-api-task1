@@ -1,7 +1,6 @@
 package com.task.demo.movie_database_api.controller;
 
-import com.task.demo.movie_database_api.entity.Actor;
-import com.task.demo.movie_database_api.service.ActorService;
+import com.task.demo.movie_database_api.model.Actor;
 import com.task.demo.movie_database_api.service.ActorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

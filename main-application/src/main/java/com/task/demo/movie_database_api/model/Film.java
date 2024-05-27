@@ -1,4 +1,4 @@
-package com.task.demo.movie_database_api.entity;
+package com.task.demo.movie_database_api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

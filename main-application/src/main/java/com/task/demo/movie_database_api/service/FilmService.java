@@ -1,6 +1,6 @@
 package com.task.demo.movie_database_api.service;
 
-import com.task.demo.movie_database_api.entity.Film;
+import com.task.demo.movie_database_api.model.Film;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
