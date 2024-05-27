@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.controller;
 
 import com.task.demo.movie_database_api.model.Film;
 import com.task.demo.movie_database_api.service.FilmServiceImpl;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/film")
 public class FilmController {
 
-    private FilmServiceImpl filmServiceImpl;
+    private final FilmServiceImpl filmServiceImpl;
 
     @Autowired
     public FilmController(FilmServiceImpl filmServiceImpl) {
@@ -24,7 +25,7 @@ public class FilmController {
     }
 
     @GetMapping("/{filmId}")
-    public Film getFilmById(@PathVariable String filmId) {
+    public Film getFilmById(@PathVariable ObjectId filmId) {
         return filmServiceImpl.getFilmById(filmId);
     }
 
@@ -39,7 +40,7 @@ public class FilmController {
     }
 
     @DeleteMapping("/{filmId}")
-    public void deleteFilmById(@PathVariable String filmId) {
+    public void deleteFilmById(@PathVariable ObjectId filmId) {
         filmServiceImpl.deleteFilmById(filmId);
     }
 }

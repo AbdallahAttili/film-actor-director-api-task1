@@ -3,6 +3,7 @@ package com.task.demo.movie_database_api.dao;
 import com.task.demo.movie_database_api.model.Film;
 import dev.morphia.Datastore;
 import dev.morphia.query.Query;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,7 +31,7 @@ public class FilmRepositoryImpl implements FilmRepository {
     }
 
     @Override
-    public Film findById(String filmId) {
+    public Film findById(ObjectId filmId) {
         return datastore.find(Film.class)
                 .field("_id")
                 .equal(filmId)
@@ -43,7 +44,7 @@ public class FilmRepositoryImpl implements FilmRepository {
     }
 
     @Override
-    public void deleteById(String filmId) {
+    public void deleteById(ObjectId filmId) {
         Query<Film> query = datastore.createQuery(Film.class)
                 .field("_id")
                 .equal(filmId);

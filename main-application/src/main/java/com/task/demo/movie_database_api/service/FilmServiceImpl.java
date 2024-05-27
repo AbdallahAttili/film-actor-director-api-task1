@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.service;
 
 import com.task.demo.movie_database_api.dao.FilmRepositoryImpl;
 import com.task.demo.movie_database_api.model.Film;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public Film getFilmById(String filmId) {
+    public Film getFilmById(ObjectId filmId) {
         return filmRepositoryImpl.findById(filmId);
     }
 
@@ -38,7 +39,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void deleteFilmById(String filmId) {
+    public void deleteFilmById(ObjectId filmId) {
         filmRepositoryImpl.deleteById(filmId);
     }
 }
