@@ -1,10 +1,18 @@
 package com.task.demo.movie_database_api.dao;
 
 import com.task.demo.movie_database_api.model.Film;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface FilmRepository extends MongoRepository<Film, String> {
+import java.util.List;
 
+public interface FilmRepository {
+
+    Film save(Film film);
+
+    List<Film> findAll();
+
+    Film findById(String filmId);
+
+    void existsById(Film newFilm);
+
+    void deleteById(String filmId);
 }

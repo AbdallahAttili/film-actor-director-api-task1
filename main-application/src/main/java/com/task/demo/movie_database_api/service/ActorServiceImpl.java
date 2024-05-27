@@ -1,52 +1,45 @@
 package com.task.demo.movie_database_api.service;
 
+import com.task.demo.movie_database_api.dao.ActorRepositoryImpl;
 import com.task.demo.movie_database_api.model.Actor;
-import com.task.demo.movie_database_api.dao.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class ActorServiceImpl implements ActorService {
 
-    ActorRepository actorRepository;
+    private final ActorRepositoryImpl actorRepositoryImpl;
 
     @Autowired
-    public ActorServiceImpl(ActorRepository actorRepository) {
-        this.actorRepository = actorRepository;
+    public ActorServiceImpl(ActorRepositoryImpl actorRepositoryImpl) {
+        this.actorRepositoryImpl = actorRepositoryImpl;
     }
 
     @Override
     public Actor createActor(Actor actor) {
-        return actorRepository.save(actor);
+        return actorRepositoryImpl.save(actor);
     }
 
     @Override
-    public Page<Actor> getAllActors(Pageable pageable) {
-        return actorRepository.findAll(pageable);
+    public List<Actor> getAllActors() {
+        return actorRepositoryImpl.findAll();
     }
 
     @Override
-    public Optional<Actor> getActorById(String actorId) {
-        return actorRepository.findById(actorId);
+    public Actor getActorById(String actorId) {
+        return actorRepositoryImpl.findById(actorId);
     }
 
     @Override
-    public void updateActor(String actorId, Actor newActor) {
-        if (actorRepository.existsById(actorId)) {
-            actorRepository.deleteById(actorId);
-            actorRepository.save(newActor);
-        } else {
-            throw new IllegalArgumentException("Actor with id " + actorId + " not found!");
-        }
+    public void updateActor(Actor newActor) {
+        actorRepositoryImpl.existsById(newActor);
     }
 
     @Override
     public void deleteActorById(String actorId) {
-        actorRepository.deleteById(actorId);
+        actorRepositoryImpl.deleteById(actorId);
     }
 
 }

@@ -3,11 +3,9 @@ package com.task.demo.movie_database_api.controller;
 import com.task.demo.movie_database_api.model.Film;
 import com.task.demo.movie_database_api.service.FilmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/film")
@@ -21,12 +19,12 @@ public class FilmController {
     }
 
     @GetMapping
-    public Page<Film> getAllFilms(Pageable pageable) {
-        return filmServiceImpl.getAllFilms(pageable);
+    public List<Film> getAllFilms() {
+        return filmServiceImpl.getAllFilms();
     }
 
     @GetMapping("/{filmId}")
-    public Optional<Film> getFilmById(@PathVariable String filmId) {
+    public Film getFilmById(@PathVariable String filmId) {
         return filmServiceImpl.getFilmById(filmId);
     }
 
@@ -36,8 +34,8 @@ public class FilmController {
     }
 
     @PutMapping("/{filmId}")
-    public void updateFilm(@PathVariable String filmId, @RequestBody Film newFilm) {
-        filmServiceImpl.updateFilm(filmId, newFilm);
+    public void updateFilm(@RequestBody Film newFilm) {
+        filmServiceImpl.updateFilm(newFilm);
     }
 
     @DeleteMapping("/{filmId}")

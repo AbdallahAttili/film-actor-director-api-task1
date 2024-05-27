@@ -3,17 +3,15 @@ package com.task.demo.movie_database_api.controller;
 import com.task.demo.movie_database_api.model.Director;
 import com.task.demo.movie_database_api.service.DirectorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/director")
 public class DirectorController {
 
-    private DirectorServiceImpl directorServiceImpl;
+    private final DirectorServiceImpl directorServiceImpl;
 
     @Autowired
     public DirectorController(DirectorServiceImpl directorServiceImpl) {
@@ -21,12 +19,12 @@ public class DirectorController {
     }
 
     @GetMapping
-    public Page<Director> getAllDirectors(Pageable pageable) {
-        return directorServiceImpl.getAllDirectors(pageable); // Returns a list of all directors
+    public List<Director> getAllDirectors() {
+        return directorServiceImpl.getAllDirectors(); // Returns a list of all directors
     }
 
     @GetMapping("/{directorId}")
-    public Optional<Director> getDirectorById(@PathVariable String directorId) {
+    public Director getDirectorById(@PathVariable String directorId) {
         return directorServiceImpl.getDirectorById(directorId); // Returns a director by their ID
     }
 
@@ -35,9 +33,9 @@ public class DirectorController {
         return directorServiceImpl.createDirector(director);
     }
 
-    @PutMapping("/{directorId}")
+    @PutMapping()
     public void updateDirector(@PathVariable String directorId, @RequestBody Director newDirector) {
-        directorServiceImpl.updateDirector(directorId, newDirector);
+        directorServiceImpl.updateDirector(newDirector);
     }
 
     @DeleteMapping("/{directorId}")

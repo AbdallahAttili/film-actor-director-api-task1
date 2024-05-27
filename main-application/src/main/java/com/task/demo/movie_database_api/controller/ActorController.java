@@ -3,17 +3,16 @@ package com.task.demo.movie_database_api.controller;
 import com.task.demo.movie_database_api.model.Actor;
 import com.task.demo.movie_database_api.service.ActorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/actor")
 public class ActorController {
 
-    private ActorServiceImpl actorServiceImpl;
+    private final ActorServiceImpl actorServiceImpl;
 
     @Autowired
     public ActorController(ActorServiceImpl actorServiceImpl) {
@@ -26,22 +25,22 @@ public class ActorController {
     }
 
     @GetMapping
-    public Page<Actor> getAllActors(Pageable pageable) {
-        return actorServiceImpl.getAllActors(pageable);
+    public List<Actor> getAllActors() {
+        return actorServiceImpl.getAllActors();
     }
 
     @GetMapping("/{id}")
-    public Optional<Actor> getActorById(@PathVariable String id) {
+    public Actor getActorById(@PathVariable String id) {
         return actorServiceImpl.getActorById(id);
     }
 
-    @PutMapping("/{actorId}") // Maps HTTP PUT requests with an actorId path variable to this method
-    public void updateActor(@PathVariable String actorId, @RequestBody Actor actor) {
-        actorServiceImpl.updateActor(actorId, actor); // Updates an existing actor
+    @PutMapping()
+    public void updateActor(@RequestBody Actor actor) {
+        actorServiceImpl.updateActor(actor); // Updates an existing actor
     }
 
-    @DeleteMapping("/{actorId}") // Maps HTTP DELETE requests with an actorId path variable to this method
+    @DeleteMapping("/{actorId}")
     public void deleteActorById(@PathVariable String actorId) {
-        actorServiceImpl.deleteActorById(actorId); // Deletes an actor by their ID
+        actorServiceImpl.deleteActorById(actorId);
     }
 }

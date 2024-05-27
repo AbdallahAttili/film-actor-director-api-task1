@@ -1,52 +1,45 @@
 package com.task.demo.movie_database_api.service;
 
+import com.task.demo.movie_database_api.dao.DirectorRepositoryImpl;
 import com.task.demo.movie_database_api.model.Director;
-import com.task.demo.movie_database_api.dao.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class DirectorServiceImpl implements DirectorService {
 
-    private DirectorRepository directorRepository;
+    private final DirectorRepositoryImpl directorRepositoryImpl;
 
     @Autowired
-    public DirectorServiceImpl(DirectorRepository directorRepository) {
-        this.directorRepository = directorRepository;
+    public DirectorServiceImpl(DirectorRepositoryImpl directorRepositoryImpl) {
+        this.directorRepositoryImpl = directorRepositoryImpl;
     }
 
     @Override
     public Director createDirector(Director director) {
-        return directorRepository.save(director);
+        return directorRepositoryImpl.save(director);
     }
 
     @Override
-    public Page<Director> getAllDirectors(Pageable pageable) {
-        return directorRepository.findAll(pageable);
+    public List<Director> getAllDirectors() {
+        return directorRepositoryImpl.findAll();
     }
 
     @Override
-    public Optional<Director> getDirectorById(String directorId) {
-        return directorRepository.findById(directorId);
+    public Director getDirectorById(String directorId) {
+        return directorRepositoryImpl.findById(directorId);
     }
 
 
     @Override
-    public void updateDirector(String directorId, Director newDirector) {
-        if (directorRepository.existsById(directorId)) {
-            directorRepository.deleteById(directorId);
-            directorRepository.save(newDirector);
-        } else {
-            throw new IllegalArgumentException("This director id " + directorId + " Can't be found!");
-        }
+    public void updateDirector(Director newDirector) {
+        directorRepositoryImpl.existsById(newDirector);
     }
 
     @Override
     public void deleteDirectorById(String directorId) {
-        directorRepository.deleteById(directorId);
+        directorRepositoryImpl.deleteById(directorId);
     }
 }
