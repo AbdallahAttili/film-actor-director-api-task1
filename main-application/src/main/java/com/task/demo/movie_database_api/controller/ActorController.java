@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.controller;
 
 import com.task.demo.movie_database_api.entity.Actor;
 import com.task.demo.movie_database_api.service.ActorService;
+import com.task.demo.movie_database_api.service.ActorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,35 +10,39 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController // Indicates that this class is a REST controller
-@RequestMapping("/api/actor") // Base URL for all endpoints in this controller
+@RestController
+@RequestMapping("/api/actor")
 public class ActorController {
 
-    @Autowired // Automatically injects an instance of ActorService
-    private ActorService actorService;
+    private ActorServiceImpl actorServiceImpl;
 
-    @PostMapping // Maps HTTP POST requests to this method
+    @Autowired
+    public ActorController(ActorServiceImpl actorServiceImpl) {
+        this.actorServiceImpl = actorServiceImpl;
+    }
+
+    @PostMapping
     public Actor createActor(@RequestBody Actor actor) {
-        return actorService.createActor(actor); // Creates a new actor
+        return actorServiceImpl.createActor(actor); // Creates a new actor
     }
 
-    @GetMapping // Maps HTTP GET requests to this method
+    @GetMapping
     public Page<Actor> getAllActors(Pageable pageable) {
-        return actorService.getAllActors(pageable); // Returns a list of all actors
+        return actorServiceImpl.getAllActors(pageable);
     }
 
-    @GetMapping("/{id}") // Maps HTTP GET requests with an ID path variable to this method
+    @GetMapping("/{id}")
     public Optional<Actor> getActorById(@PathVariable String id) {
-        return actorService.getActorById(id); // Returns an actor by their ID
+        return actorServiceImpl.getActorById(id);
     }
 
     @PutMapping("/{actorId}") // Maps HTTP PUT requests with an actorId path variable to this method
     public void updateActor(@PathVariable String actorId, @RequestBody Actor actor) {
-        actorService.updateActor(actorId, actor); // Updates an existing actor
+        actorServiceImpl.updateActor(actorId, actor); // Updates an existing actor
     }
 
     @DeleteMapping("/{actorId}") // Maps HTTP DELETE requests with an actorId path variable to this method
     public void deleteActorById(@PathVariable String actorId) {
-        actorService.deleteActorById(actorId); // Deletes an actor by their ID
+        actorServiceImpl.deleteActorById(actorId); // Deletes an actor by their ID
     }
 }

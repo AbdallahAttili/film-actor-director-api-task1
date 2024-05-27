@@ -1,7 +1,7 @@
 package com.task.demo.movie_database_api.controller;
 
 import com.task.demo.movie_database_api.entity.Film;
-import com.task.demo.movie_database_api.service.FilmService;
+import com.task.demo.movie_database_api.service.FilmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,35 +9,39 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController // Indicates that this class is a REST controller
-@RequestMapping("/api/film") // Base URL for all endpoints in this controller
+@RestController
+@RequestMapping("/api/film")
 public class FilmController {
 
-    @Autowired // Automatically injects an instance of FilmService
-    private FilmService filmService;
+    private FilmServiceImpl filmServiceImpl;
 
-    @GetMapping // Maps HTTP GET requests to this method
+    @Autowired
+    public FilmController(FilmServiceImpl filmServiceImpl) {
+        this.filmServiceImpl = filmServiceImpl;
+    }
+
+    @GetMapping
     public Page<Film> getAllFilms(Pageable pageable) {
-        return filmService.getAllFilms(pageable); // Returns a list of all films
+        return filmServiceImpl.getAllFilms(pageable);
     }
 
-    @GetMapping("/{filmId}") // Maps HTTP GET requests with a filmId path variable to this method
+    @GetMapping("/{filmId}")
     public Optional<Film> getFilmById(@PathVariable String filmId) {
-        return filmService.getFilmById(filmId); // Returns a film by its ID
+        return filmServiceImpl.getFilmById(filmId);
     }
 
-    @PostMapping // Maps HTTP POST requests to this method
+    @PostMapping
     public Film createFilm(@RequestBody Film film) {
-        return filmService.createFilm(film); // Creates a new film
+        return filmServiceImpl.createFilm(film);
     }
 
-    @PutMapping("/{filmId}") // Maps HTTP PUT requests with a filmId path variable to this method
+    @PutMapping("/{filmId}")
     public void updateFilm(@PathVariable String filmId, @RequestBody Film newFilm) {
-        filmService.updateFilm(filmId, newFilm); // Updates an existing film
+        filmServiceImpl.updateFilm(filmId, newFilm);
     }
 
-    @DeleteMapping("/{filmId}") // Maps HTTP DELETE requests with a filmId path variable to this method
+    @DeleteMapping("/{filmId}")
     public void deleteFilmById(@PathVariable String filmId) {
-        filmService.deleteFilmById(filmId); // Deletes a film by its ID
+        filmServiceImpl.deleteFilmById(filmId);
     }
 }
