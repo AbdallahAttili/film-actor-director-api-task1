@@ -1,6 +1,7 @@
 package com.task.demo.movie_database_api.service;
 
 import com.task.demo.movie_database_api.model.Actor;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ public interface ActorService {
 
     List<Actor> getAllActors();
 
-    Actor getActorById(String actorId);
+    Actor getActorById(ObjectId actorId);
 
     void updateActor(Actor newActor);
 
-    void deleteActorById(String actorId);
+    void deleteActorById(ObjectId actorId);
 }

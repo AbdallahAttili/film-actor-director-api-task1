@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.service;
 
 import com.task.demo.movie_database_api.dao.ActorRepositoryImpl;
 import com.task.demo.movie_database_api.model.Actor;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actor getActorById(String actorId) {
+    public Actor getActorById(ObjectId actorId) {
         return actorRepositoryImpl.findById(actorId);
     }
 
@@ -38,7 +39,7 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public void deleteActorById(String actorId) {
+    public void deleteActorById(ObjectId actorId) {
         actorRepositoryImpl.deleteById(actorId);
     }
 

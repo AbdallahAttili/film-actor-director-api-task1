@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.controller;
 
 import com.task.demo.movie_database_api.model.Director;
 import com.task.demo.movie_database_api.service.DirectorServiceImpl;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class DirectorController {
     }
 
     @GetMapping("/{directorId}")
-    public Director getDirectorById(@PathVariable String directorId) {
+    public Director getDirectorById(@PathVariable ObjectId directorId) {
         return directorServiceImpl.getDirectorById(directorId); // Returns a director by their ID
     }
 
@@ -39,7 +40,7 @@ public class DirectorController {
     }
 
     @DeleteMapping("/{directorId}")
-    public void deleteDirectorById(@PathVariable String directorId) {
+    public void deleteDirectorById(@PathVariable ObjectId directorId) {
         directorServiceImpl.deleteDirectorById(directorId);
     }
 }

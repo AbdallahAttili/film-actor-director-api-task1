@@ -2,6 +2,7 @@ package com.task.demo.movie_database_api.controller;
 
 import com.task.demo.movie_database_api.model.Actor;
 import com.task.demo.movie_database_api.service.ActorServiceImpl;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class ActorController {
     }
 
     @GetMapping("/{id}")
-    public Actor getActorById(@PathVariable String id) {
+    public Actor getActorById(@PathVariable ObjectId id) {
         return actorServiceImpl.getActorById(id);
     }
 
@@ -40,7 +41,7 @@ public class ActorController {
     }
 
     @DeleteMapping("/{actorId}")
-    public void deleteActorById(@PathVariable String actorId) {
+    public void deleteActorById(@PathVariable ObjectId actorId) {
         actorServiceImpl.deleteActorById(actorId);
     }
 }

@@ -1,6 +1,7 @@
 package com.task.demo.movie_database_api.dao;
 
 import com.task.demo.movie_database_api.model.Actor;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -11,9 +12,9 @@ public interface ActorRepository {
 
     List<Actor> findAll();
 
-    Actor findById(String actorId);
+    Actor findById(ObjectId actorId);
 
     void existsById(Actor actor);
 
-    void deleteById(String actorId);
+    void deleteById(ObjectId actorId);
 }

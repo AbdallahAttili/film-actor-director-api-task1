@@ -1,6 +1,7 @@
 package com.task.demo.movie_database_api.service;
 
 import com.task.demo.movie_database_api.model.Director;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -8,11 +9,11 @@ public interface DirectorService {
 
     Director createDirector(Director director);
 
-    Director getDirectorById(String directorId);
+    Director getDirectorById(ObjectId directorId);
 
     List<Director> getAllDirectors();
 
     void updateDirector(Director newDirector);
 
-    void deleteDirectorById(String directorId);
+    void deleteDirectorById(ObjectId directorId);
 }

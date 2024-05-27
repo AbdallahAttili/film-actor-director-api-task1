@@ -3,6 +3,7 @@ package com.task.demo.movie_database_api.dao;
 import com.task.demo.movie_database_api.model.Director;
 import dev.morphia.Datastore;
 import dev.morphia.query.Query;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,7 +33,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public Director findById(String directorId) {
+    public Director findById(ObjectId directorId) {
         return datastore.find(Director.class)
                 .field("_id")
                 .equal(directorId)
@@ -45,7 +46,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public void deleteById(String directorId) {
+    public void deleteById(ObjectId directorId) {
         Query<Director> query = datastore.createQuery(Director.class)
                 .field("_id")
                 .equal(directorId);
