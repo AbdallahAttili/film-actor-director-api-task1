@@ -24,9 +24,9 @@ public class FilmController {
         return filmServiceImpl.getAllFilms();
     }
 
-    @GetMapping("/{filmId}")
-    public Film getFilmById(@PathVariable ObjectId filmId) {
-        return filmServiceImpl.getFilmById(filmId);
+    @GetMapping("/search")
+    public Film getFilmById(@RequestParam("filmName") String filmName) {
+        return filmServiceImpl.getFilmByName(filmName);
     }
 
     @PostMapping

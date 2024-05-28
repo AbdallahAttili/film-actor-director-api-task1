@@ -21,12 +21,12 @@ public class DirectorController {
 
     @GetMapping
     public List<Director> getAllDirectors() {
-        return directorServiceImpl.getAllDirectors(); // Returns a list of all directors
+        return directorServiceImpl.getAllDirectors();
     }
 
-    @GetMapping("/{directorId}")
-    public Director getDirectorById(@PathVariable ObjectId directorId) {
-        return directorServiceImpl.getDirectorById(directorId); // Returns a director by their ID
+    @GetMapping("/search")
+    public Director getDirectorByName(@RequestParam("directorName") String directorName) {
+        return directorServiceImpl.getDirectorByName(directorName);
     }
 
     @PostMapping

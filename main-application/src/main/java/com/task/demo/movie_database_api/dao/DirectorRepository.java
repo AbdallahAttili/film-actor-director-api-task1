@@ -11,7 +11,7 @@ public interface DirectorRepository {
 
     List<Director> findAll();
 
-    Director findById(ObjectId directorId);
+    Director findByName(String directorName);
 
     void existsById(String directorId, Director director);
 

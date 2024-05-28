@@ -11,7 +11,7 @@ public interface ActorService {
 
     List<Actor> getAllActors();
 
-    Actor getActorById(ObjectId actorId);
+    Actor getActorByName(String actorName);
 
     void updateActor(String actorId, Actor newActor);
 

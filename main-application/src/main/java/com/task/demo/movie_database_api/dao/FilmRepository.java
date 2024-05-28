@@ -11,7 +11,7 @@ public interface FilmRepository {
 
     List<Film> findAll();
 
-    Film findById(ObjectId filmId);
+    Film findByName(String filmName);
 
     void existsById(String filmId, Film newFilm);
 

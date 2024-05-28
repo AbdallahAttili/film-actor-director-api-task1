@@ -33,10 +33,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public Director findById(ObjectId directorId) {
+    public Director findByName(String directorName) {
         return datastore.find(Director.class)
                 .field("_id")
-                .equal(directorId)
+                .equal(directorName)
                 .first();
     }
 

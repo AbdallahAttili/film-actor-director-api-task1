@@ -11,7 +11,7 @@ public interface FilmService {
 
     List<Film> getAllFilms();
 
-    Film getFilmById(ObjectId filmId);
+    Film getFilmByName(String filmName);
 
     void updateFilm(String filmId, Film newFilm);
 

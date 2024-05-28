@@ -29,8 +29,8 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public Film getFilmById(ObjectId filmId) {
-        return filmRepositoryImpl.findById(filmId);
+    public Film getFilmByName(String filmName) {
+        return filmRepositoryImpl.findByName(filmName);
     }
 
     @Override

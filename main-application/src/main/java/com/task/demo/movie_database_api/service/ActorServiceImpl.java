@@ -29,8 +29,8 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actor getActorById(ObjectId actorId) {
-        return actorRepositoryImpl.findById(actorId);
+    public Actor getActorByName(String actorName) {
+        return actorRepositoryImpl.findByName(actorName);
     }
 
     @Override

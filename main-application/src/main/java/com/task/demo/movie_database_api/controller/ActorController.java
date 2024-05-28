@@ -22,7 +22,7 @@ public class ActorController {
 
     @PostMapping
     public Actor createActor(@RequestBody Actor actor) {
-        return actorServiceImpl.createActor(actor); // Creates a new actor
+        return actorServiceImpl.createActor(actor);
     }
 
     @GetMapping
@@ -30,14 +30,14 @@ public class ActorController {
         return actorServiceImpl.getAllActors();
     }
 
-    @GetMapping("/{id}")
-    public Actor getActorById(@PathVariable ObjectId id) {
-        return actorServiceImpl.getActorById(id);
+    @GetMapping("/search")
+    public Actor getActorByName(@RequestParam("name") String actorName) {
+        return actorServiceImpl.getActorByName(actorName);
     }
 
     @PutMapping("/{actorId}")
     public void updateActor(@PathVariable String actorId, @RequestBody Actor newActor) {
-        actorServiceImpl.updateActor(actorId, newActor); // Updates an existing actor
+        actorServiceImpl.updateActor(actorId, newActor);
     }
 
     @DeleteMapping("/{actorId}")

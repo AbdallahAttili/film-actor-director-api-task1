@@ -31,10 +31,10 @@ public class FilmRepositoryImpl implements FilmRepository {
     }
 
     @Override
-    public Film findById(ObjectId filmId) {
+    public Film findByName(String filmName) {
         return datastore.find(Film.class)
-                .field("_id")
-                .equal(filmId)
+                .field("name")
+                .equal(filmName)
                 .first();
     }
 

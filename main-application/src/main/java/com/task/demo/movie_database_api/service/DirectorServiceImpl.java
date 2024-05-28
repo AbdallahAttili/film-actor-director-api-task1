@@ -29,8 +29,8 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public Director getDirectorById(ObjectId directorId) {
-        return directorRepositoryImpl.findById(directorId);
+    public Director getDirectorByName(String directorName) {
+        return directorRepositoryImpl.findByName(directorName);
     }
 
 

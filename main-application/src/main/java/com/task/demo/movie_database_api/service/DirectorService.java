@@ -9,7 +9,7 @@ public interface DirectorService {
 
     Director createDirector(Director director);
 
-    Director getDirectorById(ObjectId directorId);
+    Director getDirectorByName(String directorName);
 
     List<Director> getAllDirectors();
 

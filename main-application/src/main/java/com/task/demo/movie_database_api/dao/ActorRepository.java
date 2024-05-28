@@ -12,7 +12,7 @@ public interface ActorRepository {
 
     List<Actor> findAll();
 
-    Actor findById(ObjectId actorId);
+    Actor findByName(String actorName);
 
     void existsById(String actorId, Actor newActor);
 
