@@ -20,26 +20,58 @@ public class ActorController {
         this.actorServiceImpl = actorServiceImpl;
     }
 
+    /**
+     * creates an actor
+     *
+     * @param actor of type Actor
+     * @return Actor
+     */
     @PostMapping
     public Actor createActor(@RequestBody Actor actor) {
         return actorServiceImpl.createActor(actor);
     }
 
+
+    /**
+     * retrieves the actor object by its name
+     *
+     * @param name of type string
+     * @return Actor
+     */
+    @GetMapping("/search")
+    public Actor getActorByName(@RequestParam("name") String name) {
+        return actorServiceImpl.getActorByName(name);
+    }
+
+
+    /**
+     * retrieves all actors
+     *
+     * @return List<Actor>
+     */
     @GetMapping
     public List<Actor> getAllActors() {
         return actorServiceImpl.getAllActors();
     }
 
-    @GetMapping("/search")
-    public Actor getActorByName(@RequestParam("name") String actorName) {
-        return actorServiceImpl.getActorByName(actorName);
-    }
 
+    /**
+     * updates the actor using its id
+     *
+     * @param actorId  of type String
+     * @param newActor of type Actor
+     */
     @PutMapping("/{actorId}")
     public void updateActor(@PathVariable String actorId, @RequestBody Actor newActor) {
         actorServiceImpl.updateActor(actorId, newActor);
     }
 
+
+    /**
+     * deletes an actor using its id
+     *
+     * @param actorId of type ObjectId
+     */
     @DeleteMapping("/{actorId}")
     public void deleteActorById(@PathVariable ObjectId actorId) {
         actorServiceImpl.deleteActorById(actorId);

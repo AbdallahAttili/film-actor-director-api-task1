@@ -5,6 +5,7 @@ import dev.morphia.Datastore;
 import dev.morphia.query.Query;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.SpringDataMongoDB;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,10 +34,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public Director findByName(String directorName) {
+    public Director findByName(String name) {
         return datastore.find(Director.class)
-                .field("_id")
-                .equal(directorName)
+                .field("name")
+                .equal(name)
                 .first();
     }
 

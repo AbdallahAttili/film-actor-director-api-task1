@@ -31,12 +31,12 @@ public class ActorRepositoryImpl implements ActorRepository {
     }
 
     @Override
-    public Actor findByName(String actorName) {
+    public Actor findByName(String name) {
         Query<Actor> findByNameQuery = datastore.createQuery(Actor.class)
                 .field("name")
-                .equal(actorName);
+                .equal(name);
 
-        if (findByNameQuery == null) throw new IllegalArgumentException("Actor name " + actorName + " can't be found!");
+        if (findByNameQuery == null) throw new IllegalArgumentException("Actor name " + name + " can't be found!");
 
         return findByNameQuery.first();
     }
