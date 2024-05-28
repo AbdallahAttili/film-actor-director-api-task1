@@ -35,9 +35,9 @@ public class ActorController {
         return actorServiceImpl.getActorById(id);
     }
 
-    @PutMapping()
-    public void updateActor(@RequestBody Actor actor) {
-        actorServiceImpl.updateActor(actor); // Updates an existing actor
+    @PutMapping("/{actorId}")
+    public void updateActor(@PathVariable String actorId, @RequestBody Actor newActor) {
+        actorServiceImpl.updateActor(actorId, newActor); // Updates an existing actor
     }
 
     @DeleteMapping("/{actorId}")

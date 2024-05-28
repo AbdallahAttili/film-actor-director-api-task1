@@ -35,8 +35,8 @@ public class FilmController {
     }
 
     @PutMapping("/{filmId}")
-    public void updateFilm(@RequestBody Film newFilm) {
-        filmServiceImpl.updateFilm(newFilm);
+    public void updateFilm(@PathVariable String filmId, @RequestBody Film newFilm) {
+        filmServiceImpl.updateFilm(filmId, newFilm);
     }
 
     @DeleteMapping("/{filmId}")

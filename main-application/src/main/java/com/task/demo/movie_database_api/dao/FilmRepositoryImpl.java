@@ -39,7 +39,14 @@ public class FilmRepositoryImpl implements FilmRepository {
     }
 
     @Override
-    public void existsById(Film newFilm) {
+    public void existsById(String filmId, Film newFilm) {
+        Query<Film> findByIdQuery = datastore.createQuery(Film.class)
+                .field("_id")
+                .equal(filmId);
+
+        if (findByIdQuery == null) throw new IllegalArgumentException("Film id " + filmId + " can't be found!");
+
+        datastore.delete(findByIdQuery);
         datastore.save(newFilm);
     }
 
@@ -48,6 +55,8 @@ public class FilmRepositoryImpl implements FilmRepository {
         Query<Film> query = datastore.createQuery(Film.class)
                 .field("_id")
                 .equal(filmId);
+
+        if (query == null) throw new IllegalArgumentException("Film id " + filmId + " can't be found!");
 
         datastore.delete(query);
     }

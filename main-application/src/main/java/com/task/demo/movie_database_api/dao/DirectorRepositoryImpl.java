@@ -41,8 +41,15 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public void existsById(Director director) {
-        datastore.save(director);
+    public void existsById(String directorId, Director newDirector) {
+        Query<Director> findByIdQuery = datastore.createQuery(Director.class)
+                .field("_id")
+                .equal(directorId);
+
+        if (findByIdQuery == null) throw new IllegalArgumentException("Director id " + directorId + " can't be found!");
+
+        datastore.delete(findByIdQuery);
+        datastore.save(newDirector);
     }
 
     @Override

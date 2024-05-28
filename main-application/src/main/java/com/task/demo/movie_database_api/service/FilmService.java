@@ -13,7 +13,7 @@ public interface FilmService {
 
     Film getFilmById(ObjectId filmId);
 
-    void updateFilm(Film newFilm);
+    void updateFilm(String filmId, Film newFilm);
 
     void deleteFilmById(ObjectId filmId);
 }

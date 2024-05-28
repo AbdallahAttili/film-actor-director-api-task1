@@ -35,8 +35,8 @@ public class DirectorServiceImpl implements DirectorService {
 
 
     @Override
-    public void updateDirector(Director newDirector) {
-        directorRepositoryImpl.existsById(newDirector);
+    public void updateDirector(String directorId, Director newDirector) {
+        directorRepositoryImpl.existsById(directorId, newDirector);
     }
 
     @Override

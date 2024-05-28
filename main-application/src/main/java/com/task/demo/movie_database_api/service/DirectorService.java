@@ -13,7 +13,7 @@ public interface DirectorService {
 
     List<Director> getAllDirectors();
 
-    void updateDirector(Director newDirector);
+    void updateDirector(String directorId, Director newDirector);
 
     void deleteDirectorById(ObjectId directorId);
 }

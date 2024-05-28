@@ -34,8 +34,8 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void updateFilm(Film newFilm) {
-        filmRepositoryImpl.existsById(newFilm);
+    public void updateFilm(String filmId, Film newFilm) {
+        filmRepositoryImpl.existsById(filmId, newFilm);
     }
 
     @Override

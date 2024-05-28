@@ -13,7 +13,7 @@ public interface ActorService {
 
     Actor getActorById(ObjectId actorId);
 
-    void updateActor(Actor newActor);
+    void updateActor(String actorId, Actor newActor);
 
     void deleteActorById(ObjectId actorId);
 }

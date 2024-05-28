@@ -13,7 +13,7 @@ public interface FilmRepository {
 
     Film findById(ObjectId filmId);
 
-    void existsById(Film newFilm);
+    void existsById(String filmId, Film newFilm);
 
     void deleteById(ObjectId filmId);
 }

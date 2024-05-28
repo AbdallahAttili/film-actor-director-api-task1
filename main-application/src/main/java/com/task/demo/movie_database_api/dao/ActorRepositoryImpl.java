@@ -32,15 +32,25 @@ public class ActorRepositoryImpl implements ActorRepository {
 
     @Override
     public Actor findById(ObjectId actorId) {
-        return datastore.find(Actor.class)
+        Query<Actor> findByIdQuery = datastore.createQuery(Actor.class)
                 .field("_id")
-                .equal(actorId)
-                .first();
+                .equal(actorId);
+
+        if (findByIdQuery == null) throw new IllegalArgumentException("Actor id " + actorId + " can't be found!");
+
+        return findByIdQuery.first();
     }
 
     @Override
-    public void existsById(Actor actor) {
-        datastore.save(actor);
+    public void existsById(String actorId, Actor newActor) {
+        Query<Actor> query = datastore.createQuery(Actor.class)
+                .field("_id")
+                .equal(actorId);
+
+        if (query == null) throw new IllegalArgumentException("Actor id " + actorId + " can't be found!");
+
+        datastore.delete(query);
+        datastore.save(newActor);
     }
 
     @Override
@@ -48,6 +58,9 @@ public class ActorRepositoryImpl implements ActorRepository {
         Query<Actor> query = datastore.createQuery(Actor.class)
                 .field("_id")
                 .equal(actorId);
+
+        if (query == null) throw new IllegalArgumentException("Actor id " + actorId + " can't be found!");
+
         datastore.delete(query);
     }
 }

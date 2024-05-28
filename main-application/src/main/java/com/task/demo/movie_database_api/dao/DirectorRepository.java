@@ -13,7 +13,7 @@ public interface DirectorRepository {
 
     Director findById(ObjectId directorId);
 
-    void existsById(Director director);
+    void existsById(String directorId, Director director);
 
     void deleteById(ObjectId DirectorId);
 }

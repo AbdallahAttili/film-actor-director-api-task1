@@ -14,7 +14,7 @@ public interface ActorRepository {
 
     Actor findById(ObjectId actorId);
 
-    void existsById(Actor actor);
+    void existsById(String actorId, Actor newActor);
 
     void deleteById(ObjectId actorId);
 }

@@ -34,8 +34,8 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public void updateActor(Actor newActor) {
-        actorRepositoryImpl.existsById(newActor);
+    public void updateActor(String actorId, Actor newActor) {
+        actorRepositoryImpl.existsById(actorId, newActor);
     }
 
     @Override

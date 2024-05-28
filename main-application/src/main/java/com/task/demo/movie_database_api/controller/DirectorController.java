@@ -34,9 +34,9 @@ public class DirectorController {
         return directorServiceImpl.createDirector(director);
     }
 
-    @PutMapping()
-    public void updateDirector(@RequestBody Director newDirector) {
-        directorServiceImpl.updateDirector(newDirector);
+    @PutMapping("/{directorId}")
+    public void updateDirector(@PathVariable String directorId, @RequestBody Director newDirector) {
+        directorServiceImpl.updateDirector(directorId, newDirector);
     }
 
     @DeleteMapping("/{directorId}")
